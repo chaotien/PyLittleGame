@@ -1,5 +1,6 @@
 """貪吃蛇"""
 
+
 import random
 import sys
 import time
@@ -22,8 +23,8 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption('貪吃蛇')
 
-    light = (100, 100, 100)  # 蛇的顏色
-    dark = (200, 200, 200)   # 食物顏色
+    food_color = (150, 100, 100)  # 食物顏色
+    snake_color = (200, 200, 250)   # 蛇的顏色
 
     font1 = pygame.font.SysFont('SimHei', 24)  # 得分的字體
     font2 = pygame.font.Font(None, 72)  # GAME OVER 的字體
@@ -71,7 +72,7 @@ def main():
 
     game_over = True
     start = False       # 是否開始，當start = True，game_over = True 時，才顯示 GAME OVER
-    score = 0           # 得分
+    score = 100           # 得分
     orispeed = 0.5      # 原始速度
     speed = orispeed
     last_move_time = None
@@ -154,11 +155,11 @@ def main():
         # 畫食物
         if not game_over:
             # 避免 GAME OVER 的時候把 GAME OVER 的字給遮住了
-            pygame.draw.rect(screen, light, (food_x * SIZE, food_y * SIZE, SIZE, SIZE), 0)
+            pygame.draw.rect(screen, food_color, (food_x * SIZE, food_y * SIZE, SIZE, SIZE), 0)
 
         # 畫蛇
         for s in snake:
-            pygame.draw.rect(screen, dark, (s[0] * SIZE + line_width, s[1] * SIZE + line_width,
+            pygame.draw.rect(screen, snake_color, (s[0] * SIZE + line_width, s[1] * SIZE + line_width,
                                             SIZE - line_width * 2, SIZE - line_width * 2), 0)
 
         print_text(screen, font1, 30, 7, f'速度: {score//100}')
