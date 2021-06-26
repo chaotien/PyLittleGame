@@ -90,8 +90,8 @@ def main():
                         b = True
                         _init_snake()
                         _create_food()
-                        pos_x = 1
-                        pos_y = 0
+                        pos_x = 0
+                        pos_y = 1
                         # 得分
                         score = 0
                         last_move_time = time.time()
